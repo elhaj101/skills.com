@@ -11,7 +11,7 @@ import { ConsultSteps } from "@/components/ConsultSteps";
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { HeroCanvas } from "@/components/HeroCanvas";
 import { Icon, type IconName } from "@/components/Icon";
-import { Mark } from "@/components/Logo";
+import { Lockup } from "@/components/Logo";
 import { Mixed } from "@/components/Mixed";
 import { Placeholder } from "@/components/Placeholder";
 import { RotatingWord } from "@/components/RotatingWord";
@@ -61,7 +61,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               </Button>
             </div>
           </div>
-          <div className="relative mx-auto hidden aspect-square w-72 place-items-center sm:grid lg:w-80" aria-hidden="true">
+          <div className="relative mx-auto hidden aspect-square w-80 place-items-center sm:grid lg:w-[26rem]" aria-hidden="true">
             <div className="orbit-ring absolute inset-0 rounded-full border border-dashed border-line">
               <span className="absolute -top-1.5 left-1/2 h-3 w-3 rounded-full bg-lime shadow-[0_0_16px_rgb(200_255_77/0.9)]" />
             </div>
@@ -73,8 +73,14 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               style={{ background: "radial-gradient(circle, rgb(123 92 255 / .5), transparent 70%)" }}
             />
             <div className="float relative">
+              {/* The full logo: tile and "skills" wordmark */}
               <div data-tilt>
-                <Mark size={150} />
+                <span className="block lg:hidden">
+                  <Lockup height={96} />
+                </span>
+                <span className="hidden lg:block">
+                  <Lockup height={112} />
+                </span>
               </div>
             </div>
           </div>
