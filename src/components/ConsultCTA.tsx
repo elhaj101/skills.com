@@ -15,7 +15,7 @@ export function ConsultCTA({ dict, lang, title }: { dict: Dictionary; lang: stri
           <h2 className="text-2xl">{title ?? dict.consultCta.title}</h2>
           <p className="mt-2 text-muted">{dict.consultCta.body}</p>
         </div>
-        <Button href={`/${lang}/consulting/`} className="shrink-0">
+        <Button href={`/${lang}/consulting/`} className="btn-shine shrink-0">
           <Icon name="calendar" size={18} />
           {dict.consultCta.button}
         </Button>

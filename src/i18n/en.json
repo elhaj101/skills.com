@@ -87,14 +87,17 @@
     "consultIntro": "Consulting is how I work with you directly: no course, no exaggerated promises.",
     "steps": [
       {
+        "icon": "message",
         "title": "Tell me about your business",
         "body": "What you do, what takes your time, and what you want to improve."
       },
       {
+        "icon": "search",
         "title": "We pick the right tools",
         "body": "Together we find the tools and automations that fit your business and budget."
       },
       {
+        "icon": "check",
         "title": "You get a clear plan",
         "body": "A step-by-step plan, and help with the setup if you need it."
       }

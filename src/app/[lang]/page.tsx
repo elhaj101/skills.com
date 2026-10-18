@@ -7,6 +7,7 @@ import { Button } from "@/components/Button";
 import { ChapterCard } from "@/components/ChapterCard";
 import { ConsentGate } from "@/components/ConsentGate";
 import { ConsultCTA } from "@/components/ConsultCTA";
+import { ConsultSteps } from "@/components/ConsultSteps";
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { HeroCanvas } from "@/components/HeroCanvas";
 import { Icon, type IconName } from "@/components/Icon";
@@ -137,19 +138,12 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 
       {/* How consulting works */}
       <Section id="how-consulting-works" title={t.consultTitle} intro={t.consultIntro}>
-        <ol data-stagger className="grid gap-4 md:grid-cols-3">
-          {t.steps.map((s, i) => (
-            <li key={s.title} data-reveal className="card card-hover accent-lime flex h-full flex-col p-6">
-              <span className="mb-3 grid h-10 w-10 place-items-center rounded-full bg-lime font-bold text-ink" aria-hidden="true">
-                <bdi dir="ltr">{i + 1}</bdi>
-              </span>
-              <h3 className="line-clamp-2 h-[2lh] text-lg">{s.title}</h3>
-              <p className="mt-1 line-clamp-3 h-[3lh] text-muted">{s.body}</p>
-            </li>
-          ))}
-        </ol>
-        <div data-reveal className="mt-6">
-          <Button href={`/${lang}/consulting/`}>{dict.cta.consult}</Button>
+        <ConsultSteps steps={t.steps} />
+        <div data-reveal className="mt-8 flex justify-center">
+          <Button href={`/${lang}/consulting/`} className="btn-shine">
+            <Icon name="calendar" size={18} />
+            {dict.cta.consult}
+          </Button>
         </div>
       </Section>
 

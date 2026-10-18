@@ -43,6 +43,7 @@ Website for **Skills**, an Arabic TikTok page about running a small business in 
 - **Rotating tool name** in the hero (Claude, Canva, n8n, …). The width never jumps, and screen readers hear the list once.
 - **Logo mark:** tilts toward the pointer, floats slowly, and has orbiting rings.
 - **Cards:** a spotlight glow in the chapter colour follows the pointer.
+- **"How consulting works" timeline** (`ConsultSteps.tsx`): a line joining the three steps fills as you scroll, led by a glowing comet. When it reaches a step, the badge pops and pulses, the icon draws itself in, and the card lights up. It runs horizontally on desktop and vertically on phones, in both RTL and LTR. The consulting buttons get a soft light sweep.
 - **Scroll reveal:** sections fade in, with list items one after another. Content is only hidden when JavaScript is running, so nothing stays invisible if a script fails.
 - **Reduced motion:** every effect is off or still when the device asks for it.
 
@@ -72,7 +73,7 @@ Website for **Skills**, an Arabic TikTok page about running a small business in 
   | `ConsultCTA` | Consulting call-to-action panel |
   | `ConsentGate` | TikTok and booking embeds load only after a click, with an optional "remember" |
   | `Header` (+ dropdown and drawer), `LangSwitch`, `Breadcrumbs` | Navigation |
-  | `Effects`, `HeroCanvas`, `RotatingWord` | Motion (see above) |
+  | `Effects`, `HeroCanvas`, `RotatingWord`, `ConsultSteps` | Motion (see above) |
   | `ThemeBackground`, `ThemeToggle`, `Footer`, `Section`, `Icon` | Layout pieces and one line-icon set |
   | `Placeholder` | Gold dashed box marking content you still need to supply |
 
