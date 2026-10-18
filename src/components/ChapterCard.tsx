@@ -26,28 +26,31 @@ export function ChapterCard({
   const Heading = headingLevel;
   const num = String(chapter.number).padStart(2, "0");
   return (
-    <article className={`card card-hover accent-${chapter.accent} overflow-hidden`}>
+    <article className={`card card-hover accent-${chapter.accent} @container flex h-full flex-col overflow-hidden`}>
       <ChapterMotif
         theme={chapter.theme}
         id={`ch${chapter.number}`}
-        className="pointer-events-none absolute end-0 top-0 h-28 w-44 opacity-90 sm:-end-6 sm:top-1/2 sm:h-48 sm:w-72 sm:-translate-y-1/2"
+        className="pointer-events-none absolute end-0 top-0 h-28 w-44 opacity-90 @lg:-end-6 @lg:top-1/2 @lg:h-48 @lg:w-72 @lg:-translate-y-1/2"
       />
-      {/* Phones: motif sits in the top corner above the title.
-          Wider screens: motif on the end side, text kept clear of it. */}
-      <div className="relative flex min-h-44 flex-col gap-2 p-5 sm:p-6 sm:pe-56">
-        <p className="kicker min-h-16 sm:min-h-0">
+      {/* Narrow card (< 32rem): motif sits in the top corner above the title.
+          Wide card: motif on the end side, text kept clear of it.
+          Decided by the card's own width (container query), not the screen.
+          Title and description always take the same number of lines, so
+          every chapter card has the same size. */}
+      <div className="relative flex flex-1 flex-col gap-2 p-5 @lg:p-6 @lg:pe-56">
+        <p className="kicker min-h-16 @lg:min-h-0">
           <bdi dir="ltr">
             {chapter.theme} {num}
           </bdi>
         </p>
-        <Heading className="text-xl sm:text-2xl">
+        <Heading className="line-clamp-2 h-[2lh] text-xl @lg:text-2xl">
           <Link href={href} className="stretched-link">
             <Mixed text={text.title} split={lang === "ar"} latinClassName={lang === "ar" ? "glow-latin" : ""} />
           </Link>
         </Heading>
-        <p className="text-sm text-muted sm:text-base">{text.description}</p>
+        <p className="line-clamp-3 h-[3lh] text-sm text-muted @lg:text-base">{text.description}</p>
         <p className="mt-auto flex items-center gap-2 pt-2 text-sm font-bold">
-          <span className="chip chip-accent">
+          <span className="chip chip-accent whitespace-nowrap">
             <bdi dir="ltr">
               {published} / {total}
             </bdi>

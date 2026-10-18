@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/i18n";
 import { basePath } from "@/lib/paths";
+import { Icon } from "./Icon";
 
 export const LANG_KEY = "skills-lang";
 
@@ -48,6 +49,7 @@ export function LangSwitch({
       onClick={remember}
       className={variant === "compact" ? "lang-switch" : "btn btn-secondary btn-sm"}
     >
+      {variant === "compact" && <Icon name="globe" size={16} />}
       {text}
     </a>
   );

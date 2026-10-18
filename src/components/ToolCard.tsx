@@ -8,7 +8,7 @@ import { Mixed } from "./Mixed";
 export function ToolCard({ tool, episodeCount, dict, lang }: { tool: Tool; episodeCount: number; dict: Dictionary; lang: string }) {
   const text = toolText(tool, lang);
   return (
-    <article className="card card-hover accent-violet flex flex-col gap-3 p-5">
+    <article className="card card-hover accent-violet flex h-full flex-col gap-3 p-5">
       <div className="flex items-center gap-3">
         {tool.logo ? (
           // Tool logos identify the tool only (nominative use)
@@ -22,13 +22,14 @@ export function ToolCard({ tool, episodeCount, dict, lang }: { tool: Tool; episo
           <h3 className="text-lg">
             <bdi dir="ltr">{tool.name}</bdi>
           </h3>
-          {tool.pricing && <span className="chip">{dict.tool.pricing[tool.pricing]}</span>}
+          {/* Fixed-height row so cards with and without pricing line up */}
+          <div className="h-7">{tool.pricing && <span className="chip">{dict.tool.pricing[tool.pricing]}</span>}</div>
         </div>
       </div>
-      <p className="text-muted">
+      <p className="line-clamp-2 h-[2lh] text-muted">
         <Mixed text={text.description} />
       </p>
-      <p className="text-sm">
+      <p className="line-clamp-2 h-[2lh] text-sm">
         <strong>{dict.tool.bestFor}</strong> <Mixed text={text.bestFor} />
       </p>
       <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-2 text-sm">
