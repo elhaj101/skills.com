@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { getDictionary, type Locale } from "@/i18n";
+import { alternates, getDictionary, type Locale } from "@/i18n";
 import { UnderConstruction } from "@/components/UnderConstruction";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/consulting">): Promise<Metadata> {
-  const dict = getDictionary((await params).lang as Locale);
-  return { title: dict.pages.consulting, robots: { index: false } };
+  const lang = (await params).lang as Locale;
+  const dict = getDictionary(lang);
+  return { title: dict.pages.consulting, robots: { index: false }, alternates: alternates(lang, "consulting/") };
 }
 
 export default async function ConsultingPage({ params }: PageProps<"/[lang]/consulting">) {
   const lang = (await params).lang as Locale;
   const dict = getDictionary(lang);
-  return <UnderConstruction title={dict.pages.consulting} dict={dict} lang={lang} />;
+  return <UnderConstruction title={dict.pages.consulting} path="consulting/" dict={dict} lang={lang} />;
 }

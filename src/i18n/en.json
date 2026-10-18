@@ -1,0 +1,147 @@
+{
+  "site": {
+    "name": "skills",
+    "tagline": "For growing smart businesses",
+    "description": "Practical help for small business owners in Europe: Claude and AI tools, business software and automation, explained one tool at a time."
+  },
+  "a11y": {
+    "skip": "Skip to content",
+    "home": "Home",
+    "mainNav": "Main navigation",
+    "theme": "Switch between light and dark mode",
+    "opensNewTab": "(opens in a new tab)",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mobileNav": "Mobile navigation",
+    "breadcrumb": "Breadcrumb",
+    "progress": "Reading progress",
+    "language": "Choose language"
+  },
+  "nav": {
+    "episodes": "Episodes",
+    "chapters": "Chapters",
+    "tools": "Tools",
+    "consulting": "Consulting",
+    "about": "About",
+    "resources": "Free resources",
+    "contact": "Contact",
+    "menu": "Menu",
+    "chaptersMenu": "Episode chapters"
+  },
+  "lang": {
+    "ar": "العربية",
+    "en": "English",
+    "switchTo": "العربية",
+    "switchToShort": "ع",
+    "switchLabel": "اقرأ هذه الصفحة بالعربية"
+  },
+  "cta": {
+    "consult": "Request a consultation",
+    "watch": "Watch the episodes",
+    "watchOnTikTok": "Watch on TikTok",
+    "follow": "Follow on TikTok",
+    "allEpisodes": "All episodes",
+    "allChapters": "All chapters",
+    "openChapter": "Open chapter",
+    "aboutMore": "Read my story"
+  },
+  "home": {
+    "titleLine1": "For growing",
+    "titleHighlight": "smart businesses",
+    "intro": "Every episode introduces one tool or one method that helps your business in Europe: what it is, why it helps, and how to use it today.",
+    "rotatingPrefix": "One thing per episode:",
+    "rotating": ["Claude", "Canva", "n8n", "Google Maps", "CapCut"],
+    "pillarsTitle": "What you will learn",
+    "pillars": [
+      { "icon": "spark", "title": "Claude and AI tools", "body": "Use AI for writing, planning and answering customers." },
+      { "icon": "apps", "title": "Business software", "body": "The everyday tools that organise your business: invoices, design, communication." },
+      { "icon": "automation", "title": "Automation", "body": "Let repetitive tasks run on their own, without coding." },
+      { "icon": "landmark", "title": "Your business in Europe", "body": "Paperwork, rules and the European context, explained clearly." }
+    ],
+    "chaptersTitle": "The ten chapters",
+    "chaptersIntro": "Ten chapters, ten episodes each. Pick the topic you need and watch it from the start.",
+    "latestTitle": "Latest episodes",
+    "latestEmpty": "The first episodes are coming soon. Follow on TikTok to see them as soon as they're out.",
+    "consultTitle": "How consulting works",
+    "consultIntro": "Consulting is how I work with you directly: no course, no exaggerated promises.",
+    "steps": [
+      { "title": "Tell me about your business", "body": "What you do, what takes your time, and what you want to improve." },
+      { "title": "We pick the right tools", "body": "Together we find the tools and automations that fit your business and budget." },
+      { "title": "You get a clear plan", "body": "A step-by-step plan, and help with the setup if you need it." }
+    ],
+    "aboutTitle": "About me",
+    "aboutBody": "I'm Ali El Haj, a software developer in Berlin. Before that I worked in retail and teaching. Today I use these tools every day in my own projects, and I explain them the way I use them.",
+    "tiktokTitle": "Follow on TikTok",
+    "tiktokIntro": "Three short episodes a week, each about one useful thing."
+  },
+  "consultCta": {
+    "title": "Want to apply this to your business?",
+    "body": "Tell me about your business. We'll choose the tools and automations that fit, and you'll get a clear plan.",
+    "button": "Request a consultation"
+  },
+  "chapter": {
+    "label": "Chapter",
+    "published": "episodes published",
+    "allTitle": "The ten chapters",
+    "allIntro": "All episodes, organised by topic. Open a chapter and watch its episodes in order.",
+    "episodesTitle": "Episodes in this chapter"
+  },
+  "episode": {
+    "label": "Episode",
+    "comingSoon": "Coming soon",
+    "play": "Play on TikTok",
+    "coverAlt": "Cover of episode {n}: {title}",
+    "types": {
+      "tool": "Tool",
+      "method": "Method",
+      "correct-use": "Correct use"
+    }
+  },
+  "tool": {
+    "bestFor": "Best for",
+    "officialSite": "Official website",
+    "episodes": "episodes",
+    "affiliate": "Affiliate link",
+    "pricing": {
+      "free": "Free",
+      "paid": "Paid",
+      "freemium": "Free with paid plans"
+    }
+  },
+  "consent": {
+    "embedTitle": "TikTok video",
+    "embedBody": "The video only loads with your consent. When it loads, your browser sends data to TikTok.",
+    "load": "Load video",
+    "remember": "Remember my choice for all videos",
+    "privacy": "Privacy policy",
+    "missing": "The video link hasn't been added yet."
+  },
+  "pages": {
+    "underConstruction": "This page is under construction and will be ready soon.",
+    "tools": "Tools directory",
+    "consulting": "Consulting",
+    "about": "About",
+    "contact": "Contact",
+    "impressum": "Impressum (legal notice)",
+    "privacy": "Privacy policy",
+    "notFoundTitle": "This page doesn't exist",
+    "notFoundBody": "The link may have changed, or the page isn't published yet.",
+    "backHome": "Back to the home page"
+  },
+  "placeholders": {
+    "photo": "Photo of Ali",
+    "draft": "Draft text: Ali reviews it before publishing.",
+    "handle": "The TikTok handle is temporary."
+  },
+  "footer": {
+    "explore": "Explore",
+    "legal": "Legal",
+    "impressum": "Impressum (legal notice)",
+    "privacy": "Privacy policy",
+    "cookies": "Privacy settings",
+    "follow": "Follow",
+    "language": "Language",
+    "disclaimer": "General information, not legal or tax advice.",
+    "logos": "Tool logos are used only to identify the tools and do not imply any partnership."
+  }
+}

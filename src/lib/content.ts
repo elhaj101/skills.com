@@ -31,6 +31,7 @@ export type Chapter = {
   theme: ChapterTheme;
   accent: Accent;
   description: string;
+  descriptionEn?: string;
 };
 
 export const episodeTypes = ["tool", "method", "correct-use"] as const;
@@ -54,6 +55,9 @@ export type Episode = {
   publishedAt?: string;
   summary?: string;
   steps?: string[];
+  /** English versions; the Arabic text is shown when missing */
+  titleEn?: string;
+  showsEn?: string;
 };
 
 export type Pricing = "free" | "paid" | "freemium";
@@ -70,6 +74,8 @@ export type Tool = {
   logo?: string;
   /** Only with explicit approval; always labelled on the site */
   affiliateUrl?: string;
+  descriptionEn?: string;
+  bestForEn?: string;
 };
 
 function fail(file: string, index: number, message: string): never {
@@ -122,6 +128,19 @@ export const isPublished = (e: Episode) => Boolean(e.tiktokUrl);
 export const getChapter = (n: number) => chapters.find((c) => c.number === n);
 export const episodesOf = (n: number) => episodes.filter((e) => e.chapter === n);
 export const publishedCount = (n: number) => episodesOf(n).filter(isPublished).length;
+
+// Localised fields. English falls back to Arabic until a translation exists.
+export const chapterText = (c: Chapter, lang: string) =>
+  lang === "en"
+    ? { title: c.titleEn, description: c.descriptionEn ?? c.description }
+    : { title: c.title, description: c.description };
+
+export const episodeTitle = (e: Episode, lang: string) => (lang === "en" ? (e.titleEn ?? e.title) : e.title);
+
+export const toolText = (t: Tool, lang: string) =>
+  lang === "en"
+    ? { description: t.descriptionEn ?? t.description, bestFor: t.bestForEn ?? t.bestFor }
+    : { description: t.description, bestFor: t.bestFor };
 
 export const episodeHref = (lang: string, e: Episode) =>
   `/${lang}/chapters/${getChapter(e.chapter)?.slug}/episode-${e.number}/`;
