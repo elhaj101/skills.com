@@ -1,0 +1,48 @@
+name: Deploy preview to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      # GitHub Pages serves this repo under /skills.com/, so the build needs
+      # that base path. On a real domain leave NEXT_PUBLIC_BASE_PATH unset.
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /skills.com
+          NEXT_PUBLIC_SITE_URL: https://elhaj101.github.io/skills.com
+      # .nojekyll ships from public/ so Pages doesn't drop the _next/ folder.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
