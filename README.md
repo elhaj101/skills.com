@@ -37,9 +37,13 @@ Website for **Skills**, an Arabic TikTok page about running a small business in 
 - **Mobile:** a drawer built on the native `<dialog>` element, which gives focus trapping, Escape and an inert page behind it. It includes the chapter list, language switch, theme toggle and the consulting button.
 - **On scroll:** the header blurs once you scroll, hides while you scroll down, comes back when you scroll up, and shows a reading-progress line. It never hides while keyboard focus is inside it.
 
-**Effects** (`src/components/Effects.tsx`, `HeroCanvas.tsx`, `RotatingWord.tsx`)
+**Effects** (`src/components/Effects.tsx`, `SpaceParticles.tsx`, `RotatingWord.tsx`, `ConsultSteps.tsx`)
 
-- **Hero star field:** a small canvas with three depth layers that twinkle and shift with the pointer, plus an occasional lime shooting star. It pauses when off screen or when the tab is hidden.
+- **Space particles on every page** (`SpaceParticles.tsx`): one fixed canvas behind all content, over the unchanged background colour.
+  - Drifting, twinkling stars in three depth layers, a few tinted violet, lime or cyan. They shift with depth as you scroll.
+  - Stars near the mouse swell and link to it with faint lines, and a click or tap pushes them away.
+  - An occasional lime shooting star.
+  - Fewer stars on phones. It pauses in background tabs.
 - **Rotating tool name** in the hero (Claude, Canva, n8n, …). The width never jumps, and screen readers hear the list once.
 - **Logo mark:** tilts toward the pointer, floats slowly, and has orbiting rings.
 - **Cards:** a spotlight glow in the chapter colour follows the pointer.
@@ -59,7 +63,7 @@ Website for **Skills**, an Arabic TikTok page about running a small business in 
 
 - Brand tokens: ink, violet, lime, paper, plus cyan, pink and gold for chapter accents. Every text colour has been contrast-checked in both themes (see "Design decisions" below).
 - **Dark mode by default, plus light mode.** The sun/moon toggle in the header remembers the choice, with no flash on load.
-- **Deep-space background:** two slow-drifting star layers and soft glows, pure CSS with no JavaScript. It is switched off when the device asks for reduced motion.
+- **Deep-space background:** the colour gradient and soft glows are CSS, with the particle canvas on top (see Effects).
 - **Fonts:** Readex Pro for Arabic and Space Grotesk for Latin words and digits, self-hosted.
 - **RTL handled throughout.** Latin tool names and numbers inside Arabic text are isolated automatically (`Mixed` component). In large headings the Latin name goes on its own line. Arrows mirror in RTL.
 - **Components:**
@@ -73,7 +77,7 @@ Website for **Skills**, an Arabic TikTok page about running a small business in 
   | `ConsultCTA` | Consulting call-to-action panel |
   | `ConsentGate` | TikTok and booking embeds load only after a click, with an optional "remember" |
   | `Header` (+ dropdown and drawer), `LangSwitch`, `Breadcrumbs` | Navigation |
-  | `Effects`, `HeroCanvas`, `RotatingWord`, `ConsultSteps` | Motion (see above) |
+  | `Effects`, `SpaceParticles`, `RotatingWord`, `ConsultSteps` | Motion (see above) |
   | `ThemeBackground`, `ThemeToggle`, `Footer`, `Section`, `Icon` | Layout pieces and one line-icon set |
   | `Placeholder` | Gold dashed box marking content you still need to supply |
 
