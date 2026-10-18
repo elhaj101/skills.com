@@ -5,7 +5,7 @@
 // glowing comet at its tip. Each step lights up when the fill reaches it:
 // the badge pulses, its icon draws itself, the card glows.
 // Works in both directions (RTL/LTR) and layouts (row on desktop, column on
-// phones) because the track is measured from the badges themselves.
+// phones and tablets) because the track is measured from the badges themselves.
 // With reduced motion every step is simply shown as active.
 
 import { useEffect, useRef } from "react";
@@ -111,16 +111,17 @@ export function ConsultSteps({ steps }: { steps: Step[] }) {
         <span className="steps-comet" />
       </div>
       {/* role="list": keeps list semantics in Safari with list-style: none */}
-      <ol role="list" className="relative grid gap-4 md:grid-cols-3 md:gap-6">
+      <ol role="list" className="relative grid gap-4 lg:grid-cols-3 lg:gap-6">
         {steps.map((s) => (
           <li key={s.title} className="step">
             <span className="step-badge" aria-hidden="true" />
-            <div className="step-card card flex h-full flex-col p-6">
-              <span className="step-icon mb-3 grid h-11 w-11 place-items-center rounded-xl bg-surface-2">
-                <Icon name={s.icon as IconName} size={22} draw />
+            <div className="step-card card flex h-full flex-col gap-3 p-6 sm:p-7">
+              <span className="step-icon grid h-14 w-14 place-items-center rounded-2xl bg-surface-2">
+                <Icon name={s.icon as IconName} size={28} draw />
               </span>
-              <h3 className="line-clamp-2 h-[2lh] text-lg">{s.title}</h3>
-              <p className="mt-1 line-clamp-3 h-[3lh] text-muted">{s.body}</p>
+              {/* Short copy, large type: one line of title, up to two of text */}
+              <h3 className="step-title line-clamp-1 text-[1.375rem] sm:text-3xl">{s.title}</h3>
+              <p className="line-clamp-2 h-[2lh] text-lg font-bold leading-snug">{s.body}</p>
             </div>
           </li>
         ))}
