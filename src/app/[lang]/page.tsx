@@ -117,9 +117,9 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         </ul>
       </Section>
 
-      {/* Latest episodes */}
-      <Section id="latest" title={t.latestTitle}>
-        {latest.length > 0 ? (
+      {/* Latest episodes: only shown once at least one episode is published */}
+      {latest.length > 0 && (
+        <Section id="latest" title={t.latestTitle}>
           <ul data-stagger className="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-3 sm:px-0 lg:grid-cols-6">
             {latest.map((e) => (
               <li key={`${e.chapter}-${e.number}`} data-reveal className="w-44 shrink-0 snap-start sm:w-auto">
@@ -132,15 +132,8 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
               </li>
             ))}
           </ul>
-        ) : (
-          <div data-reveal className="card flex flex-col items-start gap-4 p-6">
-            <p>{t.latestEmpty}</p>
-            <Button href={site.tiktokUrl} external variant="secondary" size="sm">
-              {dict.cta.follow}
-            </Button>
-          </div>
-        )}
-      </Section>
+        </Section>
+      )}
 
       {/* How consulting works */}
       <Section id="how-consulting-works" title={t.consultTitle} intro={t.consultIntro}>
