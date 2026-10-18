@@ -9,7 +9,6 @@ import { ConsentGate } from "@/components/ConsentGate";
 import { ConsultCTA } from "@/components/ConsultCTA";
 import { ConsultSteps } from "@/components/ConsultSteps";
 import { EpisodeCard } from "@/components/EpisodeCard";
-import { HeroCanvas } from "@/components/HeroCanvas";
 import { Icon, type IconName } from "@/components/Icon";
 import { Lockup } from "@/components/Logo";
 import { Mixed } from "@/components/Mixed";
@@ -36,7 +35,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
     <>
       {/* Hero */}
       <section aria-labelledby="hero-title" className="relative overflow-hidden">
-        <HeroCanvas />
         <div className="container-x relative grid items-center gap-10 pb-14 pt-12 sm:pt-20 lg:grid-cols-[1.4fr_1fr]">
           <div className="flex flex-col items-start gap-6">
             <p className="chip chip-accent accent-lime text-sm">

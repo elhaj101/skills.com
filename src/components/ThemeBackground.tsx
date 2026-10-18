@@ -1,7 +1,13 @@
-// Fixed deep-space backdrop: gradients and two slow star layers in pure CSS
-// (see .starfield in globals.css).
+import { SpaceParticles } from "./SpaceParticles";
+
+// Fixed deep-space backdrop for every page: the background colour and glows
+// are CSS (.starfield in globals.css), the moving particles are a canvas.
 export function ThemeBackground() {
-  return <div className="starfield" aria-hidden="true" />;
+  return (
+    <div className="starfield" aria-hidden="true">
+      <SpaceParticles />
+    </div>
+  );
 }
 
 // Runs before first paint: applies the stored theme (no flash) and marks
