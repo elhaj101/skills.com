@@ -1,0 +1,92 @@
+[
+  {
+    "number": 1,
+    "slug": "1-claude",
+    "title": "أول خطوة مع Claude",
+    "titleEn": "Claude from zero",
+    "theme": "orbit",
+    "accent": "cyan",
+    "description": "ابدأ من الصفر: ما هو Claude، وكيف تستخدمه في عملك اليومي خطوة بخطوة."
+  },
+  {
+    "number": 2,
+    "slug": "2-paperwork",
+    "title": "أوراق مشروعك بدون صداع",
+    "titleEn": "Paperwork in Germany and Europe",
+    "theme": "constellation",
+    "accent": "lime",
+    "description": "الرسائل الرسمية والفواتير والملفات في ألمانيا وأوروبا، وأدوات تساعدك على تنظيمها."
+  },
+  {
+    "number": 3,
+    "slug": "3-start",
+    "title": "ابدأ مشروعك صح",
+    "titleEn": "Starting the business",
+    "theme": "supernova",
+    "accent": "gold",
+    "description": "الخطوات الأولى لتأسيس مشروعك في أوروبا، والأدوات التي تحتاجها من اليوم الأول."
+  },
+  {
+    "number": 4,
+    "slug": "4-marketing",
+    "title": "التسويق بدون وكالة",
+    "titleEn": "Marketing without an agency",
+    "theme": "nebula",
+    "accent": "pink",
+    "description": "اجعل الناس يجدونك: الخرائط ووسائل التواصل والتصميم، بنفسك."
+  },
+  {
+    "number": 5,
+    "slug": "5-automation",
+    "title": "الأتمتة من الصفر",
+    "titleEn": "Automation for beginners",
+    "theme": "wormhole",
+    "accent": "violet",
+    "description": "دع البرامج تقوم بالمهام المتكررة عنك، حتى لو لم تكتب سطر برمجة في حياتك."
+  },
+  {
+    "number": 6,
+    "slug": "6-claude-pro",
+    "title": "Claude للمحترفين",
+    "titleEn": "Claude for professionals",
+    "theme": "eclipse",
+    "accent": "gold",
+    "description": "استخدامات متقدمة لـ Claude في التخطيط والكتابة والتحليل وتنظيم العمل."
+  },
+  {
+    "number": 7,
+    "slug": "7-sales",
+    "title": "المبيعات وخدمة العملاء",
+    "titleEn": "Sales and customers",
+    "theme": "horizon",
+    "accent": "cyan",
+    "description": "تابع عملاءك، ورُدّ بسرعة، ولا تخسر أي طلب."
+  },
+  {
+    "number": 8,
+    "slug": "8-numbers",
+    "title": "أرقام مشروعك",
+    "titleEn": "Money and numbers",
+    "theme": "ringed",
+    "accent": "violet",
+    "description": "الفواتير والمصاريف والأرباح: افهم أرقام مشروعك بأدوات بسيطة."
+  },
+  {
+    "number": 9,
+    "slug": "9-website",
+    "title": "موقعك ومتجرك",
+    "titleEn": "Your website and shop",
+    "theme": "galaxy",
+    "accent": "pink",
+    "description": "موقع إلكتروني أو متجر أونلاين لمشروعك، من الفكرة إلى النشر."
+  },
+  {
+    "number": 10,
+    "slug": "10-cases",
+    "title": "حالات حقيقية وأسئلتكم",
+    "titleEn": "Real cases and your questions",
+    "theme": "aurora",
+    "accent": "lime",
+    "description": "أمثلة من مشاريع حقيقية، وإجابات عن أسئلتكم."
+  }
+]
