@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { alternates, getDictionary, type Locale } from "@/i18n";
+import { alternates, format, getDictionary, type Locale } from "@/i18n";
 import { chapterHref, chapters, episodeHref, episodes, episodeTitle, getChapter, isPublished, publishedCount } from "@/lib/content";
 import { site } from "@/site.config";
 import { Button } from "@/components/Button";
 import { ChapterCard } from "@/components/ChapterCard";
 import { ConsentGate } from "@/components/ConsentGate";
 import { ConsultCTA } from "@/components/ConsultCTA";
+import { ConsultSteps } from "@/components/ConsultSteps";
 import { EpisodeCard } from "@/components/EpisodeCard";
 import { HeroCanvas } from "@/components/HeroCanvas";
 import { Icon, type IconName } from "@/components/Icon";
@@ -97,24 +98,35 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         </ul>
       </Section>
 
-      {/* Chapters */}
-      <Section
-        id="chapters"
-        title={t.chaptersTitle}
-        intro={t.chaptersIntro}
-        action={
-          <Link href={`/${lang}/chapters/`} className="btn btn-ghost">
-            {dict.cta.allChapters} <Icon name="arrow-forward" size={18} />
-          </Link>
-        }
-      >
-        <ul data-stagger className="grid gap-4 md:grid-cols-2">
-          {chapters.map((c) => (
+      {/* Chapters: the first three in full, the next ones fading behind a
+          wall, and a button to the full chapters page */}
+      <Section id="chapters" title={t.chaptersTitle} intro={t.chaptersIntro}>
+        <ul data-stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {chapters.slice(0, 3).map((c) => (
             <li key={c.slug} data-reveal>
               <ChapterCard chapter={c} href={chapterHref(lang, c)} published={publishedCount(c.number)} dict={dict} lang={lang} />
             </li>
           ))}
         </ul>
+        <div className="relative mt-4">
+          {/* Decorative preview only: hidden from assistive tech and not focusable */}
+          <div className="chapters-wall" aria-hidden="true" inert>
+            <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {chapters.slice(3, 6).map((c) => (
+                <li key={c.slug}>
+                  <ChapterCard chapter={c} href={chapterHref(lang, c)} published={publishedCount(c.number)} dict={dict} lang={lang} />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-3 text-center">
+            <p className="text-sm text-muted">{format(t.moreChapters, { n: chapters.length - 3 })}</p>
+            <Link href={`/${lang}/chapters/`} className="btn btn-primary btn-shine">
+              {dict.cta.seeAllChapters}
+              <Icon name="arrow-forward" size={18} />
+            </Link>
+          </div>
+        </div>
       </Section>
 
       {/* Latest episodes: only shown once at least one episode is published */}
@@ -137,19 +149,12 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 
       {/* How consulting works */}
       <Section id="how-consulting-works" title={t.consultTitle} intro={t.consultIntro}>
-        <ol data-stagger className="grid gap-4 md:grid-cols-3">
-          {t.steps.map((s, i) => (
-            <li key={s.title} data-reveal className="card card-hover accent-lime flex h-full flex-col p-6">
-              <span className="mb-3 grid h-10 w-10 place-items-center rounded-full bg-lime font-bold text-ink" aria-hidden="true">
-                <bdi dir="ltr">{i + 1}</bdi>
-              </span>
-              <h3 className="line-clamp-2 h-[2lh] text-lg">{s.title}</h3>
-              <p className="mt-1 line-clamp-3 h-[3lh] text-muted">{s.body}</p>
-            </li>
-          ))}
-        </ol>
-        <div data-reveal className="mt-6">
-          <Button href={`/${lang}/consulting/`}>{dict.cta.consult}</Button>
+        <ConsultSteps steps={t.steps} />
+        <div data-reveal className="mt-8 flex justify-center">
+          <Button href={`/${lang}/consulting/`} className="btn-shine">
+            <Icon name="calendar" size={18} />
+            {dict.cta.consult}
+          </Button>
         </div>
       </Section>
 

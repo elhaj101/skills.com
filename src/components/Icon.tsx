@@ -33,12 +33,15 @@ export function Icon({
   size = 20,
   className = "",
   label,
+  draw = false,
 }: {
   name: IconName;
   size?: number;
   className?: string;
   /** Only for icons that carry meaning on their own; decorative otherwise */
   label?: string;
+  /** Normalise path lengths so CSS can animate the stroke drawing in */
+  draw?: boolean;
 }) {
   const flip = directional.includes(name) ? "rtl-flip" : "";
   return (
@@ -58,7 +61,7 @@ export function Icon({
       focusable="false"
     >
       {paths[name].map((d) => (
-        <path key={d} d={d} />
+        <path key={d} d={d} pathLength={draw ? 1 : undefined} />
       ))}
     </svg>
   );
