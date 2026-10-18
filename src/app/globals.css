@@ -643,6 +643,18 @@ html:has(.drawer[open]) { overflow: hidden; }
   70%, 100% { opacity: 0; transform: scale(1.45); }
 }
 
+/* Home: preview of the next chapters fading out behind a "wall" */
+.chapters-wall {
+  position: relative;
+  max-height: 15rem;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  filter: blur(1.5px) saturate(0.8);
+  -webkit-mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.55), transparent 85%);
+  mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.55), transparent 85%);
+}
+
 /* Light sweep across a call-to-action button */
 .btn-shine { position: relative; overflow: hidden; isolation: isolate; }
 .btn-shine::after {

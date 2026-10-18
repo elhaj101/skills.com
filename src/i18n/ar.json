@@ -36,7 +36,8 @@
     "allEpisodes": "كل الحلقات",
     "allChapters": "كل الفصول",
     "openChapter": "افتح الفصل",
-    "aboutMore": "اقرأ قصتي"
+    "aboutMore": "اقرأ قصتي",
+    "seeAllChapters": "شاهد الفصول العشرة"
   },
   "home": {
     "titleLine1": "لتطوير المشاريع",
@@ -98,7 +99,8 @@
       "n8n",
       "Google Maps",
       "CapCut"
-    ]
+    ],
+    "moreChapters": "{n} فصول أخرى في صفحة الحلقات"
   },
   "consultCta": {
     "title": "تريد تطبيق هذا في مشروعك؟",

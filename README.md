@@ -16,7 +16,7 @@ Website for **Skills**, an Arabic TikTok page about running a small business in 
 
 | Page | URL | State |
 |---|---|---|
-| Home | `/ar/`, `/en/` | Built: hero, four pillars, 10 chapters, latest episodes, how consulting works, short About, TikTok, consulting call to action |
+| Home | `/ar/`, `/en/` | Built: hero, four pillars, first 3 chapters (the next ones fade behind a wall with a button to all chapters), latest episodes, how consulting works, short About, TikTok, consulting call to action |
 | All chapters | `/ar/chapters/`, `/en/chapters/` | Built: 10 themed cards with published counts |
 | Chapter page | `/ar/chapters/1-claude/` … `/ar/chapters/10-cases/` | Built: themed header with motif, 10 episode slots («قريبًا» until episodes are added) |
 | Design system | `/ar/design-system/` | Built: internal reference, not indexed |

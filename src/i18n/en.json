@@ -43,7 +43,8 @@
     "allEpisodes": "All episodes",
     "allChapters": "All chapters",
     "openChapter": "Open chapter",
-    "aboutMore": "Read my story"
+    "aboutMore": "Read my story",
+    "seeAllChapters": "See all ten chapters"
   },
   "home": {
     "titleLine1": "For growing",
@@ -105,7 +106,8 @@
     "aboutTitle": "About me",
     "aboutBody": "I'm Ali El Haj, a software developer in Berlin. Before that I worked in retail and teaching. Today I use these tools every day in my own projects, and I explain them the way I use them.",
     "tiktokTitle": "Follow on TikTok",
-    "tiktokIntro": "Three short episodes a week, each about one useful thing."
+    "tiktokIntro": "Three short episodes a week, each about one useful thing.",
+    "moreChapters": "{n} more chapters on the episodes page"
   },
   "consultCta": {
     "title": "Want to apply this to your business?",

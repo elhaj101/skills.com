@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { alternates, getDictionary, type Locale } from "@/i18n";
+import { alternates, format, getDictionary, type Locale } from "@/i18n";
 import { chapterHref, chapters, episodeHref, episodes, episodeTitle, getChapter, isPublished, publishedCount } from "@/lib/content";
 import { site } from "@/site.config";
 import { Button } from "@/components/Button";
@@ -98,24 +98,35 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         </ul>
       </Section>
 
-      {/* Chapters */}
-      <Section
-        id="chapters"
-        title={t.chaptersTitle}
-        intro={t.chaptersIntro}
-        action={
-          <Link href={`/${lang}/chapters/`} className="btn btn-ghost">
-            {dict.cta.allChapters} <Icon name="arrow-forward" size={18} />
-          </Link>
-        }
-      >
-        <ul data-stagger className="grid gap-4 md:grid-cols-2">
-          {chapters.map((c) => (
+      {/* Chapters: the first three in full, the next ones fading behind a
+          wall, and a button to the full chapters page */}
+      <Section id="chapters" title={t.chaptersTitle} intro={t.chaptersIntro}>
+        <ul data-stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {chapters.slice(0, 3).map((c) => (
             <li key={c.slug} data-reveal>
               <ChapterCard chapter={c} href={chapterHref(lang, c)} published={publishedCount(c.number)} dict={dict} lang={lang} />
             </li>
           ))}
         </ul>
+        <div className="relative mt-4">
+          {/* Decorative preview only: hidden from assistive tech and not focusable */}
+          <div className="chapters-wall" aria-hidden="true" inert>
+            <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {chapters.slice(3, 6).map((c) => (
+                <li key={c.slug}>
+                  <ChapterCard chapter={c} href={chapterHref(lang, c)} published={publishedCount(c.number)} dict={dict} lang={lang} />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-3 text-center">
+            <p className="text-sm text-muted">{format(t.moreChapters, { n: chapters.length - 3 })}</p>
+            <Link href={`/${lang}/chapters/`} className="btn btn-primary btn-shine">
+              {dict.cta.seeAllChapters}
+              <Icon name="arrow-forward" size={18} />
+            </Link>
+          </div>
+        </div>
       </Section>
 
       {/* Latest episodes: only shown once at least one episode is published */}
