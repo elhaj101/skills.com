@@ -4,6 +4,53 @@ Website for **Skills**, an Arabic TikTok page about running a small business in 
 
 > **Status: early preview.** The design system, home page and chapter pages are built. The other pages (tools, consulting, about, contact, legal) are placeholders for now. Everything you still need to supply is marked with a gold **PLACEHOLDER** box on the site.
 
+**Live preview:** https://elhaj101.github.io/skills.com/ (design system: https://elhaj101.github.io/skills.com/ar/design-system/)
+
+## What's been built so far
+
+**Pages**
+
+| Page | URL | State |
+|---|---|---|
+| Home | `/ar/` | Built: hero, four pillars, 10 chapters, latest episodes, how consulting works, short About, TikTok, consulting call to action |
+| All chapters | `/ar/chapters/` | Built: 10 themed cards with published counts |
+| Chapter page | `/ar/chapters/1-claude/` … `/ar/chapters/10-cases/` | Built: themed header with motif, 10 episode slots («قريبًا» until episodes are added) |
+| Design system | `/ar/design-system/` | Built: internal reference, not indexed |
+| Tools, Consulting, About, Contact, Impressum, Privacy | `/ar/tools/` etc. | Placeholder ("under construction") |
+| 404 | any unknown URL | Built: Arabic |
+| `/` | | Forwards to `/ar/` |
+
+**Design system** (`src/app/globals.css`, `src/components/`)
+
+- Brand tokens: ink, violet, lime, paper, plus cyan, pink and gold for chapter accents. Every text colour has been contrast-checked in both themes (see "Design decisions" below).
+- **Dark mode by default, plus light mode.** The sun/moon toggle in the header remembers the choice, with no flash on load.
+- **Deep-space background:** two slow-drifting star layers and soft glows, pure CSS with no JavaScript. It is switched off when the device asks for reduced motion.
+- **Fonts:** Readex Pro for Arabic and Space Grotesk for Latin words and digits, self-hosted.
+- **RTL handled throughout.** Latin tool names and numbers inside Arabic text are isolated automatically (`Mixed` component). In large headings the Latin name goes on its own line. Arrows mirror in RTL.
+- **Components:**
+
+  | Component | What it is |
+  |---|---|
+  | `Button` | Lime primary, violet outline secondary, ghost; at least 48px tall |
+  | `ChapterCard` | Wide card with one of 10 space motifs drawn in SVG: orbit, constellation, supernova, nebula, wormhole, eclipse, planet horizon, ringed planet, galaxy spiral, aurora |
+  | `EpisodeCard` | 9:16 cover, tool chip, type label, play button to TikTok, «قريبًا» state |
+  | `ToolCard` | Monogram until a logo is added; pricing only when confirmed; affiliate links labelled |
+  | `ConsultCTA` | Consulting call-to-action panel |
+  | `ConsentGate` | TikTok and booking embeds load only after a click, with an optional "remember" |
+  | `ThemeBackground`, `ThemeToggle`, `Header`, `Footer`, `Section`, `Icon` | Layout pieces and one line-icon set |
+  | `Placeholder` | Gold dashed box marking content you still need to supply |
+
+- **Mobile first:** checked at 375px and 1280px in both themes, with no sideways scrolling. The mobile menu works without JavaScript, and every tap target is at least 44px.
+- **Scroll reveal:** sections fade in using CSS only, on browsers that support it.
+
+**Infrastructure**
+
+- Next.js 16 static export. Language prefix `/ar/` with all interface text in `src/i18n/ar.json`, ready for `/de/` and `/en/`.
+- Content is validated at build time (`src/lib/content.ts`). A mistake in a JSON file stops the build with a message naming the entry.
+- `.github/workflows/deploy.yml` lints, builds and publishes to GitHub Pages on every push to `main`.
+
+**Not done yet:** the Tools, Consulting (form and booking), About, Contact, Resources and legal pages; episode detail pages; filters and search; cookie banner; sitemap, robots.txt and structured data; image optimisation for covers. Those come next, page by page.
+
 ## Stack and why
 
 | | |
