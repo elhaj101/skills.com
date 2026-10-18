@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import type { Tool } from "@/lib/content";
+import { toolText, type Tool } from "@/lib/content";
 import type { Dictionary } from "@/i18n";
 import { asset } from "@/lib/paths";
 import { Icon } from "./Icon";
 import { Mixed } from "./Mixed";
 
-export function ToolCard({ tool, episodeCount, dict }: { tool: Tool; episodeCount: number; dict: Dictionary }) {
+export function ToolCard({ tool, episodeCount, dict, lang }: { tool: Tool; episodeCount: number; dict: Dictionary; lang: string }) {
+  const text = toolText(tool, lang);
   return (
     <article className="card card-hover accent-violet flex flex-col gap-3 p-5">
       <div className="flex items-center gap-3">
@@ -18,17 +19,17 @@ export function ToolCard({ tool, episodeCount, dict }: { tool: Tool; episodeCoun
           </span>
         )}
         <div>
-          <h3 className="text-lg" dir="ltr" style={{ textAlign: "start" }}>
-            {tool.name}
+          <h3 className="text-lg">
+            <bdi dir="ltr">{tool.name}</bdi>
           </h3>
           {tool.pricing && <span className="chip">{dict.tool.pricing[tool.pricing]}</span>}
         </div>
       </div>
       <p className="text-muted">
-        <Mixed text={tool.description} />
+        <Mixed text={text.description} />
       </p>
       <p className="text-sm">
-        <strong>{dict.tool.bestFor}</strong> <Mixed text={tool.bestFor} />
+        <strong>{dict.tool.bestFor}</strong> <Mixed text={text.bestFor} />
       </p>
       <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-2 text-sm">
         <span className="chip chip-accent">

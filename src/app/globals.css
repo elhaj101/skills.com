@@ -345,21 +345,201 @@ a { color: inherit; }
 }
 
 /* ------------------------------------------------------------------
-   Scroll reveal: CSS-only, progressive enhancement
+   English: Inter for body text, Space Grotesk for headings
    ------------------------------------------------------------------ */
+:lang(en) body { font-family: var(--font-inter), var(--font-readex), system-ui, sans-serif; line-height: 1.65; }
+:lang(en) :is(h1, h2, h3, h4, .btn, .nav-link) { font-family: var(--font-grotesk), var(--font-inter), system-ui, sans-serif; letter-spacing: -0.01em; }
+
+/* ------------------------------------------------------------------
+   Header: sticky, blurred once scrolled, hides while scrolling down
+   ------------------------------------------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid transparent;
+  background: var(--header-bg);
+  transition: transform 0.35s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.site-header[data-scrolled] {
+  background: color-mix(in srgb, var(--header-bg) 78%, transparent);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: var(--line);
+  box-shadow: 0 10px 30px -18px rgb(0 0 0 / 0.6);
+}
+.site-header[data-hidden] { transform: translateY(-100%); }
+.site-header:focus-within { transform: none; }
+
+/* Reading progress, grows from the start side */
+.site-progress {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-violet), var(--color-lime));
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+}
+[dir="rtl"] .site-progress { transform-origin: right; background: linear-gradient(-90deg, var(--color-violet), var(--color-lime)); }
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.nav-link:hover { background: var(--surface-2); }
+.nav-link[aria-current="page"],
+.nav-link[data-active] { color: var(--link); }
+.nav-link[aria-current="page"]::after,
+.nav-link[data-active]::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0.9rem;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-lime);
+  box-shadow: 0 0 10px rgb(200 255 77 / 0.6);
+}
+[data-theme="light"] .nav-link[aria-current="page"]::after,
+[data-theme="light"] .nav-link[data-active]::after { background: var(--link); box-shadow: none; }
+
+.nav-panel {
+  position: absolute;
+  inset-inline-start: 0;
+  top: calc(100% + 0.6rem);
+  width: min(36rem, 90vw);
+  padding: 0.75rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.6), 0 0 0 1px rgb(123 92 255 / 0.08);
+  animation: panel-in 0.18s ease-out;
+}
+@keyframes panel-in { from { opacity: 0; transform: translateY(-6px); } }
+
+.nav-panel-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+.nav-panel-link:hover { background: var(--surface-2); }
+.nav-panel-link[aria-current="page"] { background: var(--surface-2); color: var(--accent-text); }
+.nav-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--accent-motif);
+  box-shadow: 0 0 10px rgb(var(--accent-rgb) / 0.8);
+}
+
+.lang-switch {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+.lang-switch:hover { background: var(--surface-2); }
+
+/* Mobile drawer: a modal <dialog> sliding in from the end side */
+.drawer {
+  margin: 0;
+  margin-inline-start: auto;
+  height: 100dvh;
+  max-height: 100dvh;
+  width: min(88vw, 380px);
+  max-width: none;
+  padding: 0;
+  border: 0;
+  border-inline-start: 1px solid var(--line);
+  /* Same as the header, so the logo artwork sits on its own background */
+  background: var(--header-bg);
+  color: var(--text);
+}
+.drawer::backdrop { background: rgb(7 6 12 / 0.6); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.drawer[open] { animation: drawer-in-ltr 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+[dir="rtl"] .drawer[open] { animation-name: drawer-in-rtl; }
+@keyframes drawer-in-ltr { from { transform: translateX(100%); } }
+@keyframes drawer-in-rtl { from { transform: translateX(-100%); } }
+html:has(.drawer[open]) { overflow: hidden; }
+.drawer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  padding: 0 0.75rem;
+  border-radius: 0.9rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.drawer-link:hover { background: var(--surface-2); }
+.drawer-link[aria-current="page"] { color: var(--link); background: var(--surface-2); }
+
+/* ------------------------------------------------------------------
+   Effects (JS-driven, see components/Effects.tsx)
+   ------------------------------------------------------------------ */
+
+/* Scroll reveal: only hides content when JS is running to show it again */
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: reveal linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 35%;
-    }
+  [data-js] [data-reveal]:not([data-revealed]) { opacity: 0; transform: translateY(28px); }
+  [data-reveal] {
+    transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 70ms);
   }
 }
-@keyframes reveal {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: none; }
+
+/* Pointer spotlight in the card's accent colour */
+@media (hover: hover) and (pointer: fine) {
+  .card-hover {
+    background-image: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, -200px),
+      rgb(var(--accent-rgb, 123 92 255) / 0.13),
+      transparent 60%
+    );
+  }
 }
+
+/* Tilt toward the pointer, plus a slow float */
+[data-tilt] {
+  transform: perspective(700px) var(--tilt, rotateX(0) rotateY(0));
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .float { animation: float 7s ease-in-out infinite; }
+  .orbit-ring { animation: spin 60s linear infinite; }
+  .orbit-ring.reverse { animation-direction: reverse; animation-duration: 90s; }
+}
+@keyframes float { 50% { transform: translateY(-10px); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Rotating tool name: all words share one cell, so width never jumps */
+.rotating { display: inline-grid; vertical-align: bottom; }
+.rotating > span {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(0.6em);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.rotating > span[data-active] { opacity: 1; transform: none; }
 
 /* ------------------------------------------------------------------
    Reduced motion: no drift, no lift
@@ -372,4 +552,5 @@ a { color: inherit; }
     scroll-behavior: auto !important;
   }
   .card-hover:hover, .card-hover:focus-within, .btn-primary:hover { transform: none; }
+  .site-header[data-hidden] { transform: none; }
 }

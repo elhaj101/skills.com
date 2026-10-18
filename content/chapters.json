@@ -6,7 +6,8 @@
     "titleEn": "Claude from zero",
     "theme": "orbit",
     "accent": "cyan",
-    "description": "ابدأ من الصفر: ما هو Claude، وكيف تستخدمه في عملك اليومي خطوة بخطوة."
+    "description": "ابدأ من الصفر: ما هو Claude، وكيف تستخدمه في عملك اليومي خطوة بخطوة.",
+    "descriptionEn": "Start from zero: what Claude is, and how to use it in your daily work, step by step."
   },
   {
     "number": 2,
@@ -15,7 +16,8 @@
     "titleEn": "Paperwork in Germany and Europe",
     "theme": "constellation",
     "accent": "lime",
-    "description": "الرسائل الرسمية والفواتير والملفات في ألمانيا وأوروبا، وأدوات تساعدك على تنظيمها."
+    "description": "الرسائل الرسمية والفواتير والملفات في ألمانيا وأوروبا، وأدوات تساعدك على تنظيمها.",
+    "descriptionEn": "Official letters, invoices and files in Germany and Europe, and tools that help you keep them in order."
   },
   {
     "number": 3,
@@ -24,7 +26,8 @@
     "titleEn": "Starting the business",
     "theme": "supernova",
     "accent": "gold",
-    "description": "الخطوات الأولى لتأسيس مشروعك في أوروبا، والأدوات التي تحتاجها من اليوم الأول."
+    "description": "الخطوات الأولى لتأسيس مشروعك في أوروبا، والأدوات التي تحتاجها من اليوم الأول.",
+    "descriptionEn": "The first steps to set up your business in Europe, and the tools you need from day one."
   },
   {
     "number": 4,
@@ -33,7 +36,8 @@
     "titleEn": "Marketing without an agency",
     "theme": "nebula",
     "accent": "pink",
-    "description": "اجعل الناس يجدونك: الخرائط ووسائل التواصل والتصميم، بنفسك."
+    "description": "اجعل الناس يجدونك: الخرائط ووسائل التواصل والتصميم، بنفسك.",
+    "descriptionEn": "Get found: maps, social media and design, done yourself."
   },
   {
     "number": 5,
@@ -42,7 +46,8 @@
     "titleEn": "Automation for beginners",
     "theme": "wormhole",
     "accent": "violet",
-    "description": "دع البرامج تقوم بالمهام المتكررة عنك، حتى لو لم تكتب سطر برمجة في حياتك."
+    "description": "دع البرامج تقوم بالمهام المتكررة عنك، حتى لو لم تكتب سطر برمجة في حياتك.",
+    "descriptionEn": "Let software handle repetitive tasks for you, even if you've never written a line of code."
   },
   {
     "number": 6,
@@ -51,7 +56,8 @@
     "titleEn": "Claude for professionals",
     "theme": "eclipse",
     "accent": "gold",
-    "description": "استخدامات متقدمة لـ Claude في التخطيط والكتابة والتحليل وتنظيم العمل."
+    "description": "استخدامات متقدمة لـ Claude في التخطيط والكتابة والتحليل وتنظيم العمل.",
+    "descriptionEn": "Advanced ways to use Claude for planning, writing, analysis and organising your work."
   },
   {
     "number": 7,
@@ -60,7 +66,8 @@
     "titleEn": "Sales and customers",
     "theme": "horizon",
     "accent": "cyan",
-    "description": "تابع عملاءك، ورُدّ بسرعة، ولا تخسر أي طلب."
+    "description": "تابع عملاءك، ورُدّ بسرعة، ولا تخسر أي طلب.",
+    "descriptionEn": "Follow up with customers, reply fast, and never lose a request."
   },
   {
     "number": 8,
@@ -69,7 +76,8 @@
     "titleEn": "Money and numbers",
     "theme": "ringed",
     "accent": "violet",
-    "description": "الفواتير والمصاريف والأرباح: افهم أرقام مشروعك بأدوات بسيطة."
+    "description": "الفواتير والمصاريف والأرباح: افهم أرقام مشروعك بأدوات بسيطة.",
+    "descriptionEn": "Invoices, expenses and profit: understand your numbers with simple tools."
   },
   {
     "number": 9,
@@ -78,7 +86,8 @@
     "titleEn": "Your website and shop",
     "theme": "galaxy",
     "accent": "pink",
-    "description": "موقع إلكتروني أو متجر أونلاين لمشروعك، من الفكرة إلى النشر."
+    "description": "موقع إلكتروني أو متجر أونلاين لمشروعك، من الفكرة إلى النشر.",
+    "descriptionEn": "A website or online shop for your business, from idea to launch."
   },
   {
     "number": 10,
@@ -87,6 +96,7 @@
     "titleEn": "Real cases and your questions",
     "theme": "aurora",
     "accent": "lime",
-    "description": "أمثلة من مشاريع حقيقية، وإجابات عن أسئلتكم."
+    "description": "أمثلة من مشاريع حقيقية، وإجابات عن أسئلتكم.",
+    "descriptionEn": "Examples from real businesses, and answers to your questions."
   }
 ]

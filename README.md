@@ -1,10 +1,14 @@
 # skills: لتطوير المشاريع الذكية
 
-Website for **Skills**, an Arabic TikTok page about running a small business in Europe with AI tools, business software and automation. The site is Arabic and right-to-left, and dark mode is the default. Its main call to action is «اطلب استشارة» (request a consultation).
+Website for **Skills**, an Arabic TikTok page about running a small business in Europe with AI tools, business software and automation. The site is **Arabic (right-to-left) and English (left-to-right)**, and dark mode is the default. Its main call to action is «اطلب استشارة» (request a consultation).
 
 > **Status: early preview.** The design system, home page and chapter pages are built. The other pages (tools, consulting, about, contact, legal) are placeholders for now. Everything you still need to supply is marked with a gold **PLACEHOLDER** box on the site.
 
-**Live preview:** https://elhaj101.github.io/skills.com/ (design system: https://elhaj101.github.io/skills.com/ar/design-system/)
+**Live preview:** https://elhaj101.github.io/skills.com/
+
+- Arabic: https://elhaj101.github.io/skills.com/ar/
+- English: https://elhaj101.github.io/skills.com/en/
+- Design system: https://elhaj101.github.io/skills.com/ar/design-system/
 
 ## What's been built so far
 
@@ -12,13 +16,43 @@ Website for **Skills**, an Arabic TikTok page about running a small business in 
 
 | Page | URL | State |
 |---|---|---|
-| Home | `/ar/` | Built: hero, four pillars, 10 chapters, latest episodes, how consulting works, short About, TikTok, consulting call to action |
-| All chapters | `/ar/chapters/` | Built: 10 themed cards with published counts |
+| Home | `/ar/`, `/en/` | Built: hero, four pillars, 10 chapters, latest episodes, how consulting works, short About, TikTok, consulting call to action |
+| All chapters | `/ar/chapters/`, `/en/chapters/` | Built: 10 themed cards with published counts |
 | Chapter page | `/ar/chapters/1-claude/` … `/ar/chapters/10-cases/` | Built: themed header with motif, 10 episode slots («قريبًا» until episodes are added) |
 | Design system | `/ar/design-system/` | Built: internal reference, not indexed |
 | Tools, Consulting, About, Contact, Impressum, Privacy | `/ar/tools/` etc. | Placeholder ("under construction") |
 | 404 | any unknown URL | Built: Arabic |
-| `/` | | Forwards to `/ar/` |
+| `/` | | Forwards to the visitor's last chosen language, otherwise `/ar/` |
+
+**Languages**
+
+- **Arabic and English.** Each page exists at `/ar/…` and `/en/…`, with `hreflang` alternates, a canonical URL and Open Graph locales in the page metadata.
+- **Language switcher** in the header (`EN` / `ع`), the mobile drawer and the footer. It opens the same page in the other language, and the choice is remembered for the next visit to `/`.
+- English pages use Inter for body text and Space Grotesk for headings. Direction, fonts and arrow icons switch automatically.
+- All interface text lives in `src/i18n/ar.json` and `src/i18n/en.json`, which must have the same keys (TypeScript checks this). Content files have English fields (`titleEn`, `descriptionEn`, …). When one is missing, the Arabic text is shown.
+
+**Navigation**
+
+- **Desktop:** an "Episodes" dropdown listing all 10 chapters with their colour dots. It closes on Escape, an outside click, or when focus leaves it. The current page is marked with a glowing underline (`aria-current="page"`).
+- **Mobile:** a drawer built on the native `<dialog>` element, which gives focus trapping, Escape and an inert page behind it. It includes the chapter list, language switch, theme toggle and the consulting button.
+- **On scroll:** the header blurs once you scroll, hides while you scroll down, comes back when you scroll up, and shows a reading-progress line. It never hides while keyboard focus is inside it.
+
+**Effects** (`src/components/Effects.tsx`, `HeroCanvas.tsx`, `RotatingWord.tsx`)
+
+- **Hero star field:** a small canvas with three depth layers that twinkle and shift with the pointer, plus an occasional lime shooting star. It pauses when off screen or when the tab is hidden.
+- **Rotating tool name** in the hero (Claude, Canva, n8n, …). The width never jumps, and screen readers hear the list once.
+- **Logo mark:** tilts toward the pointer, floats slowly, and has orbiting rings.
+- **Cards:** a spotlight glow in the chapter colour follows the pointer.
+- **Scroll reveal:** sections fade in, with list items one after another. Content is only hidden when JavaScript is running, so nothing stays invisible if a script fails.
+- **Reduced motion:** every effect is off or still when the device asks for it.
+
+**Semantic structure**
+
+- **Landmarks:** a skip link, then `header` (site banner), `nav` (each one labelled), `main`, `footer` and `aside` (the consulting call to action).
+- **Headings:** one `h1` per page and no skipped levels. Sections are labelled by their headings.
+- **Lists:** cards sit in real lists (`ol` where order matters: chapters, episodes, steps).
+- **Breadcrumbs:** a `nav` with `aria-current="page"` and matching schema.org `BreadcrumbList` structured data.
+- **Bilingual 404:** one page with an Arabic section and an English section, each in its own language and direction.
 
 **Design system** (`src/app/globals.css`, `src/components/`)
 
@@ -37,15 +71,16 @@ Website for **Skills**, an Arabic TikTok page about running a small business in 
   | `ToolCard` | Monogram until a logo is added; pricing only when confirmed; affiliate links labelled |
   | `ConsultCTA` | Consulting call-to-action panel |
   | `ConsentGate` | TikTok and booking embeds load only after a click, with an optional "remember" |
-  | `ThemeBackground`, `ThemeToggle`, `Header`, `Footer`, `Section`, `Icon` | Layout pieces and one line-icon set |
+  | `Header` (+ dropdown and drawer), `LangSwitch`, `Breadcrumbs` | Navigation |
+  | `Effects`, `HeroCanvas`, `RotatingWord` | Motion (see above) |
+  | `ThemeBackground`, `ThemeToggle`, `Footer`, `Section`, `Icon` | Layout pieces and one line-icon set |
   | `Placeholder` | Gold dashed box marking content you still need to supply |
 
 - **Mobile first:** checked at 375px and 1280px in both themes, with no sideways scrolling. The mobile menu works without JavaScript, and every tap target is at least 44px.
-- **Scroll reveal:** sections fade in using CSS only, on browsers that support it.
 
 **Infrastructure**
 
-- Next.js 16 static export. Language prefix `/ar/` with all interface text in `src/i18n/ar.json`, ready for `/de/` and `/en/`.
+- Next.js 16 static export. Adding German later means adding `de` to `src/i18n/index.ts`, creating `de.json`, and adding German fields to the content files.
 - Content is validated at build time (`src/lib/content.ts`). A mistake in a JSON file stops the build with a message naming the entry.
 - `.github/workflows/deploy.yml` lints, builds and publishes to GitHub Pages on every push to `main`.
 
@@ -92,7 +127,7 @@ All content is in JSON files. You never need to touch components.
 | Chapters (titles, theme, colour, description) | `content/chapters.json` |
 | Episodes | `content/episodes.json` |
 | Tools directory | `content/tools.json` |
-| All interface text (buttons, headings, labels) | `src/i18n/ar.json` |
+| All interface text (buttons, headings, labels) | `src/i18n/ar.json` and `src/i18n/en.json` |
 | Handles, links, email, booking link, domain | `src/site.config.ts` |
 
 ### Add an episode
@@ -114,6 +149,7 @@ Add an object to `content/episodes.json`:
 }
 ```
 
+- Optional English fields: `titleEn` and `showsEn`.
 - `type` is one of `tool` (أداة), `method` (طريقة) or `correct-use` (الاستخدام الصحيح).
 - Put the cover image in `public/covers/` (1080×1920; WebP preferred).
 - While `tiktokUrl` is empty, the episode shows as «قريبًا». Paste the TikTok link and fill `publishedAt` (e.g. `2026-11-03`) to publish it.
@@ -136,7 +172,7 @@ Add an object to `content/episodes.json`:
 
 ### Change a text
 
-Find it in `src/i18n/ar.json` and edit it. Latin words such as tool names can stay inline: the site isolates them automatically so the reading order stays correct.
+Find it in `src/i18n/ar.json` (Arabic) or `src/i18n/en.json` (English) and edit it. Keep the keys identical in both files. Latin words such as tool names can stay inline: the site isolates them automatically so the reading order stays correct.
 
 ## Brand files
 
@@ -148,7 +184,7 @@ The logo files in `public/brand/` (`temp-mark.png`, `temp-wordmark-*.png`) are *
 - **Neons in light mode** (lime, cyan, pink, gold) are too light for text on paper. Each has a darker text shade (see `globals.css`). The bright tone is kept for glows and motifs.
 - **Chapter accents:** five colours, each used twice, with neighbouring chapters always different:
   Orbit cyan · Constellation lime · Supernova gold · Nebula pink · Wormhole violet · Eclipse gold · Planet horizon cyan · Ringed planet violet · Galaxy pink · Aurora lime.
-- **Chapter descriptions** in `chapters.json` and the home page texts are **drafts** for you to approve.
+- **Chapter descriptions** in `chapters.json`, the home page texts and **all English texts** are **drafts** for you to approve.
 
 ## Before launch (checklist)
 

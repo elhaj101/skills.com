@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Chapter } from "@/lib/content";
+import { chapterText, type Chapter } from "@/lib/content";
 import type { Dictionary } from "@/i18n";
 import { ChapterMotif } from "./ChapterMotif";
 import { Icon } from "./Icon";
@@ -12,6 +12,7 @@ export function ChapterCard({
   total = 10,
   dict,
   headingLevel = "h3",
+  lang,
 }: {
   chapter: Chapter;
   href: string;
@@ -19,7 +20,9 @@ export function ChapterCard({
   total?: number;
   dict: Dictionary;
   headingLevel?: "h2" | "h3";
+  lang: string;
 }) {
+  const text = chapterText(chapter, lang);
   const Heading = headingLevel;
   const num = String(chapter.number).padStart(2, "0");
   return (
@@ -32,15 +35,17 @@ export function ChapterCard({
       {/* Phones: motif sits in the top corner above the title.
           Wider screens: motif on the end side, text kept clear of it. */}
       <div className="relative flex min-h-44 flex-col gap-2 p-5 sm:p-6 sm:pe-56">
-        <p className="kicker min-h-16 sm:min-h-0" dir="ltr" style={{ textAlign: "end" }}>
-          {chapter.theme} {num}
+        <p className="kicker min-h-16 sm:min-h-0">
+          <bdi dir="ltr">
+            {chapter.theme} {num}
+          </bdi>
         </p>
         <Heading className="text-xl sm:text-2xl">
           <Link href={href} className="stretched-link">
-            <Mixed text={chapter.title} split latinClassName="glow-latin" />
+            <Mixed text={text.title} split={lang === "ar"} latinClassName={lang === "ar" ? "glow-latin" : ""} />
           </Link>
         </Heading>
-        <p className="text-sm text-muted sm:text-base">{chapter.description}</p>
+        <p className="text-sm text-muted sm:text-base">{text.description}</p>
         <p className="mt-auto flex items-center gap-2 pt-2 text-sm font-bold">
           <span className="chip chip-accent">
             <bdi dir="ltr">

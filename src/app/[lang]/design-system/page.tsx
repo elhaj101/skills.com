@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getDictionary, type Locale } from "@/i18n";
+import { alternates, getDictionary, type Locale } from "@/i18n";
 import { chapterHref, chapters, type Accent, type Tool } from "@/lib/content";
 import { site } from "@/site.config";
 import { Button } from "@/components/Button";
@@ -15,7 +15,10 @@ import { ToolCard } from "@/components/ToolCard";
 
 // Internal reference page for the design system. Not linked from the
 // navigation and not indexed.
-export const metadata: Metadata = { title: "Design system", robots: { index: false, follow: false } };
+export async function generateMetadata({ params }: PageProps<"/[lang]/design-system">): Promise<Metadata> {
+  const lang = (await params).lang as Locale;
+  return { title: "Design system", robots: { index: false, follow: false }, alternates: alternates(lang, "design-system/") };
+}
 
 const brand = [
   { name: "Ink", hex: "#0F0E17", note: "Backgrounds, text on light" },
@@ -51,8 +54,8 @@ const icons: IconName[] = ["arrow-forward", "chevron-forward", "play", "spark", 
 function DsSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="border-t border-line py-10">
-      <h2 className="kicker mb-6 text-sm" dir="ltr" style={{ textAlign: "start" }}>
-        {title}
+      <h2 className="kicker mb-6 text-sm">
+        <bdi dir="ltr">{title}</bdi>
       </h2>
       {children}
     </section>
@@ -66,8 +69,8 @@ export default async function DesignSystemPage({ params }: PageProps<"/[lang]/de
   return (
     <div className="container-x py-12">
       <header className="mb-10">
-        <p className="kicker" dir="ltr" style={{ textAlign: "start" }}>
-          skills · design system v0.1
+        <p className="kicker">
+          <bdi dir="ltr">skills · design system v0.2</bdi>
         </p>
         <h1 className="glow accent-violet mt-2 text-3xl sm:text-5xl">نظام التصميم</h1>
         <p className="mt-3 max-w-2xl text-muted">
@@ -168,7 +171,7 @@ export default async function DesignSystemPage({ params }: PageProps<"/[lang]/de
         <ul className="grid gap-4 md:grid-cols-2">
           {chapters.map((c) => (
             <li key={c.slug}>
-              <ChapterCard chapter={c} href={chapterHref(lang, c)} published={0} dict={dict} />
+              <ChapterCard chapter={c} href={chapterHref(lang, c)} published={0} dict={dict} lang={lang} />
             </li>
           ))}
         </ul>
@@ -198,8 +201,8 @@ export default async function DesignSystemPage({ params }: PageProps<"/[lang]/de
 
       <DsSection title="Tool card (sample)">
         <div className="grid gap-4 md:grid-cols-3">
-          <ToolCard tool={sampleTool} episodeCount={1} dict={dict} />
-          <ToolCard tool={{ ...sampleTool, slug: "n8n", name: "n8n", description: "مثال لبطاقة أداة مع سعر مؤكَّد.", bestFor: "الأتمتة.", url: "https://n8n.io", pricing: "freemium" }} episodeCount={0} dict={dict} />
+          <ToolCard tool={sampleTool} episodeCount={1} dict={dict} lang={lang} />
+          <ToolCard tool={{ ...sampleTool, slug: "n8n", name: "n8n", description: "مثال لبطاقة أداة مع سعر مؤكَّد.", bestFor: "الأتمتة.", url: "https://n8n.io", pricing: "freemium" }} episodeCount={0} dict={dict} lang={lang} />
         </div>
       </DsSection>
 

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import type { Accent, EpisodeType } from "@/lib/content";
-import type { Dictionary } from "@/i18n";
+import { format, type Dictionary } from "@/i18n";
 import { asset } from "@/lib/paths";
 import { Icon } from "./Icon";
 import { Mixed } from "./Mixed";
@@ -36,7 +36,7 @@ export function EpisodeCard({
         {episode.cover ? (
           <img
             src={asset(episode.cover)}
-            alt={`غلاف الحلقة ${episode.number}: ${episode.title}`}
+            alt={format(dict.episode.coverAlt, { n: episode.number, title: episode.title })}
             width={360}
             height={640}
             loading="lazy"
