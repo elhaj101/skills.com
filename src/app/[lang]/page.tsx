@@ -84,14 +84,14 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <Section id="learn" title={t.pillarsTitle}>
         <ul data-stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {t.pillars.map((p) => (
-            <li key={p.title} data-reveal className="card card-hover accent-violet p-5">
+            <li key={p.title} data-reveal className="card card-hover accent-violet flex h-full flex-col p-5">
               <span className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-surface-2 text-link">
                 <Icon name={p.icon as IconName} />
               </span>
-              <h3 className="text-lg">
+              <h3 className="line-clamp-2 h-[2lh] text-lg">
                 <Mixed text={p.title} />
               </h3>
-              <p className="mt-1 text-muted">{p.body}</p>
+              <p className="mt-1 line-clamp-3 h-[3lh] text-muted">{p.body}</p>
             </li>
           ))}
         </ul>
@@ -146,12 +146,12 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <Section id="how-consulting-works" title={t.consultTitle} intro={t.consultIntro}>
         <ol data-stagger className="grid gap-4 md:grid-cols-3">
           {t.steps.map((s, i) => (
-            <li key={s.title} data-reveal className="card card-hover accent-lime p-6">
+            <li key={s.title} data-reveal className="card card-hover accent-lime flex h-full flex-col p-6">
               <span className="mb-3 grid h-10 w-10 place-items-center rounded-full bg-lime font-bold text-ink" aria-hidden="true">
                 <bdi dir="ltr">{i + 1}</bdi>
               </span>
-              <h3 className="text-lg">{s.title}</h3>
-              <p className="mt-1 text-muted">{s.body}</p>
+              <h3 className="line-clamp-2 h-[2lh] text-lg">{s.title}</h3>
+              <p className="mt-1 line-clamp-3 h-[3lh] text-muted">{s.body}</p>
             </li>
           ))}
         </ol>

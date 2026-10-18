@@ -31,7 +31,7 @@ export function EpisodeCard({
   // A slot with no data yet: just the number and «قريبًا»
   const emptySlot = !episode.tool;
   return (
-    <article className={`card ${published ? "card-hover" : ""} accent-${accent} overflow-hidden p-2`}>
+    <article className={`card ${published ? "card-hover" : ""} accent-${accent} flex h-full flex-col overflow-hidden p-2`}>
       <div className="relative aspect-[9/16] overflow-hidden rounded-[0.9rem] bg-surface-2">
         {episode.cover ? (
           <img
@@ -82,7 +82,7 @@ export function EpisodeCard({
             </>
           )}
         </p>
-        <h3 className="text-base leading-snug">
+        <h3 className="line-clamp-2 h-[2lh] text-base leading-snug">
           {published && href ? (
             <Link href={href} className="stretched-link">
               <Mixed text={episode.title} />

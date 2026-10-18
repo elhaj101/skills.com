@@ -1,8 +1,7 @@
 "use client";
 
 // Site header: desktop nav with a chapters dropdown, a native <dialog>
-// drawer on mobile, active-page state, reading progress, and a header that
-// hides while scrolling down and returns when scrolling up.
+// drawer on mobile, active-page state and reading progress.
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -195,22 +194,18 @@ export function Header({ lang, dict, chapters }: { lang: Locale; dict: Dictionar
   const [drawerOpen, setDrawerOpen] = useState(false);
   const header = useRef<HTMLElement>(null);
 
-  // Scroll state: shadow once scrolled, hide on scroll down, show on scroll up,
-  // reading progress as a CSS variable. One rAF-throttled listener.
+  // Scroll state: blur and shadow once scrolled, plus reading progress as a
+  // CSS variable. The header always stays on screen, so the language switch,
+  // theme toggle and menu are always reachable.
   useEffect(() => {
     const el = header.current;
     if (!el) return;
-    let last = window.scrollY;
     let ticking = false;
     const update = () => {
       const y = window.scrollY;
       const max = document.documentElement.scrollHeight - window.innerHeight;
       el.style.setProperty("--progress", max > 0 ? String(Math.min(1, y / max)) : "0");
       el.toggleAttribute("data-scrolled", y > 8);
-      const focusInside = el.contains(document.activeElement) && document.activeElement !== document.body;
-      if (y > 120 && y > last + 6 && !focusInside) el.setAttribute("data-hidden", "");
-      else if (y < last - 6 || y <= 120) el.removeAttribute("data-hidden");
-      last = y;
       ticking = false;
     };
     const onScroll = () => {

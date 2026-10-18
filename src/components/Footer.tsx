@@ -2,7 +2,6 @@ import Link from "next/link";
 import type { Dictionary, Locale } from "@/i18n";
 import { navItems } from "@/lib/nav";
 import { site } from "@/site.config";
-import { Icon } from "./Icon";
 import { LangSwitch } from "./LangSwitch";
 import { Lockup } from "./Logo";
 
@@ -79,7 +78,6 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </li>
           </ul>
           <div className="mt-4 flex items-center gap-2 text-sm">
-            <Icon name="globe" size={18} className="text-muted" />
             <span className="text-muted">{dict.footer.language}:</span>
             <span className="font-bold">{dict.lang[lang]}</span>
             <span aria-hidden="true" className="text-muted">·</span>
