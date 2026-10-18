@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 // TEMPORARY: cropped from the supplied brand images (tile from the official
-// lockup, wordmarks from the light and dark versions). Replace with the
-// official skills-mark.svg and lockup files when supplied; see README.
+// lockup, wordmarks from the light and dark versions, background made
+// transparent without changing any logo colour). Replace with the official
+// skills-mark.svg and lockup files when supplied; see README.
 // The logo is never redrawn or recoloured here.
 
 import { asset } from "@/lib/paths";
