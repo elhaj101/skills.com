@@ -53,7 +53,7 @@ const icons: IconName[] = ["arrow-forward", "chevron-forward", "play", "spark", 
 
 function DsSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="border-t border-line py-10">
+    <section className="border-t border-line py-14">
       <h2 className="kicker mb-6 text-sm">
         <bdi dir="ltr">{title}</bdi>
       </h2>

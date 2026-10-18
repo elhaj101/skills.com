@@ -68,7 +68,7 @@
       {
         "icon": "apps",
         "title": "Business software",
-        "body": "The everyday tools that organise your business: invoices, design, communication."
+        "body": "Everyday tools for invoices, design and communication."
       },
       {
         "icon": "automation",
@@ -89,17 +89,17 @@
     "steps": [
       {
         "icon": "message",
-        "title": "Tell me your goal",
+        "title": "Your goal",
         "body": "What you do, and what to improve."
       },
       {
         "icon": "search",
-        "title": "We pick the tools",
-        "body": "What fits your business and budget."
+        "title": "The right tools",
+        "body": "Fits your business and budget."
       },
       {
         "icon": "check",
-        "title": "You get a plan",
+        "title": "Your plan",
         "body": "Step by step, with setup help."
       }
     ],

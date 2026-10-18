@@ -57,7 +57,7 @@ export default async function ChapterPage({ params }: PageProps<"/[lang]/chapter
           { label: text.title, href: `/${lang}/chapters/${chapter.slug}/` },
         ]}
       />
-      <header className="container-x relative overflow-hidden py-10 sm:py-16">
+      <header className="container-x relative overflow-hidden py-14 sm:py-24">
         <ChapterMotif
           theme={chapter.theme}
           id={`hero-${chapter.number}`}
@@ -80,10 +80,10 @@ export default async function ChapterPage({ params }: PageProps<"/[lang]/chapter
       </header>
 
       <section aria-labelledby="episodes-title" className="container-x">
-        <h2 id="episodes-title" data-reveal className="mb-6 text-2xl">
+        <h2 id="episodes-title" data-reveal className="mb-10 text-2xl sm:text-3xl">
           {dict.chapter.episodesTitle}
         </h2>
-        <ol data-stagger className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
+        <ol data-stagger className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-5 lg:gap-6">
           {slots.map(({ card, href }) => (
             <li key={card.number} data-reveal>
               <EpisodeCard episode={card} accent={chapter.accent} href={href} dict={dict} />
@@ -92,7 +92,7 @@ export default async function ChapterPage({ params }: PageProps<"/[lang]/chapter
         </ol>
       </section>
 
-      <div data-reveal className="container-x mt-16">
+      <div data-reveal className="container-x mt-24 sm:mt-32">
         <ConsultCTA dict={dict} lang={lang} />
       </div>
     </article>
