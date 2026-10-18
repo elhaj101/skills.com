@@ -111,7 +111,7 @@ export function ConsultSteps({ steps }: { steps: Step[] }) {
         <span className="steps-comet" />
       </div>
       {/* role="list": keeps list semantics in Safari with list-style: none */}
-      <ol role="list" className="relative grid gap-4 lg:grid-cols-3 lg:gap-6">
+      <ol role="list" className="relative grid gap-5 lg:grid-cols-3 lg:gap-8">
         {steps.map((s) => (
           <li key={s.title} className="step">
             <span className="step-badge" aria-hidden="true" />
@@ -120,7 +120,7 @@ export function ConsultSteps({ steps }: { steps: Step[] }) {
                 <Icon name={s.icon as IconName} size={28} draw />
               </span>
               {/* Short copy, large type: one line of title, up to two of text */}
-              <h3 className="step-title line-clamp-1 text-[1.375rem] sm:text-3xl">{s.title}</h3>
+              <h3 className="step-title line-clamp-1 text-[1.375rem] sm:text-3xl lg:text-[1.75rem] xl:text-3xl">{s.title}</h3>
               <p className="line-clamp-2 h-[2lh] text-lg font-bold leading-snug">{s.body}</p>
             </div>
           </li>

@@ -14,9 +14,9 @@ export function UnderConstruction({ title, path, dict, lang }: { title: string; 
           { label: title, href: `/${lang}/${path}` },
         ]}
       />
-      <div className="container-x py-10 sm:py-14">
+      <div className="container-x py-14 sm:py-20">
         <h1 className="glow accent-violet mb-6 text-3xl sm:text-5xl">{title}</h1>
-        <Placeholder className="mb-12 max-w-xl">{dict.pages.underConstruction}</Placeholder>
+        <Placeholder className="mb-16 max-w-xl">{dict.pages.underConstruction}</Placeholder>
         <ConsultCTA dict={dict} lang={lang} />
       </div>
     </>

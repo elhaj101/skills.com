@@ -23,19 +23,19 @@ export default async function ChaptersPage({ params }: PageProps<"/[lang]/chapte
           { label: dict.chapter.allTitle, href: `/${lang}/chapters/` },
         ]}
       />
-      <div className="container-x py-10 sm:py-14">
-        <header className="mb-10 max-w-2xl">
+      <div className="container-x py-14 sm:py-20">
+        <header className="mb-12 max-w-2xl sm:mb-16">
           <h1 className="glow accent-violet text-3xl sm:text-5xl">{dict.chapter.allTitle}</h1>
           <p className="mt-3 text-lg text-muted">{dict.chapter.allIntro}</p>
         </header>
-        <ol data-stagger className="grid gap-5 md:grid-cols-2">
+        <ol data-stagger className="grid gap-5 md:grid-cols-2 lg:gap-6">
           {chapters.map((c) => (
             <li key={c.slug} data-reveal>
               <ChapterCard chapter={c} href={chapterHref(lang, c)} published={publishedCount(c.number)} dict={dict} headingLevel="h2" lang={lang} />
             </li>
           ))}
         </ol>
-        <div data-reveal className="mt-16">
+        <div data-reveal className="mt-24">
           <ConsultCTA dict={dict} lang={lang} />
         </div>
       </div>

@@ -20,8 +20,8 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   ];
 
   return (
-    <footer className="mt-24 border-t border-line" style={{ background: "var(--header-bg)" }}>
-      <div className="container-x grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="mt-32 border-t border-line" style={{ background: "var(--header-bg)" }}>
+      <div className="container-x grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         <div className="flex flex-col gap-3">
           <Link href={`/${lang}/`} aria-label={`skills: ${dict.a11y.home}`} className="w-fit rounded-lg">
             <Lockup height={36} />

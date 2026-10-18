@@ -35,7 +35,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
     <>
       {/* Hero */}
       <section aria-labelledby="hero-title" className="relative overflow-hidden">
-        <div className="container-x relative grid items-center gap-10 pb-14 pt-12 sm:pt-20 lg:grid-cols-[1.4fr_1fr]">
+        <div className="container-x relative grid items-center gap-10 pb-20 pt-14 sm:pb-28 sm:pt-24 lg:grid-cols-[1.4fr_1fr]">
           <div className="flex flex-col items-start gap-6">
             <p className="chip chip-accent accent-lime text-sm">
               <Icon name="spark" size={14} />
@@ -87,7 +87,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
 
       {/* Pillars */}
       <Section id="learn" title={t.pillarsTitle}>
-        <ul data-stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul data-stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {t.pillars.map((p) => (
             <li key={p.title} data-reveal className="card card-hover accent-violet flex h-full flex-col p-5">
               <span className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-surface-2 text-link">
@@ -105,17 +105,17 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       {/* Chapters: the first three in full, the next ones fading behind a
           wall, and a button to the full chapters page */}
       <Section id="chapters" title={t.chaptersTitle} intro={t.chaptersIntro}>
-        <ul data-stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <ul data-stagger className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {chapters.slice(0, 3).map((c) => (
             <li key={c.slug} data-reveal>
               <ChapterCard chapter={c} href={chapterHref(lang, c)} published={publishedCount(c.number)} dict={dict} lang={lang} />
             </li>
           ))}
         </ul>
-        <div className="relative mt-4">
+        <div className="relative mt-5 lg:mt-6">
           {/* Decorative preview only: hidden from assistive tech and not focusable */}
           <div className="chapters-wall" aria-hidden="true" inert>
-            <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
               {chapters.slice(3, 6).map((c) => (
                 <li key={c.slug}>
                   <ChapterCard chapter={c} href={chapterHref(lang, c)} published={publishedCount(c.number)} dict={dict} lang={lang} />
@@ -154,7 +154,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       {/* How consulting works */}
       <Section id="how-consulting-works" title={t.consultTitle} intro={t.consultIntro}>
         <ConsultSteps steps={t.steps} />
-        <div data-reveal className="mt-8 flex justify-center">
+        <div data-reveal className="mt-12 flex justify-center">
           <Button href={`/${lang}/consulting/`} className="btn-shine">
             <Icon name="calendar" size={18} />
             {dict.cta.consult}
@@ -194,7 +194,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         </div>
       </Section>
 
-      <div data-reveal className="container-x">
+      <div data-reveal className="container-x pt-8 sm:pt-12">
         <ConsultCTA dict={dict} lang={lang} />
       </div>
     </>
